@@ -1,12 +1,22 @@
 .pin {
   position: absolute;
-  width: 3.08%;
-  height: 4%; 
+  width: 3.1%;
+  height: 4.5%; 
   cursor: pointer;
 
   &__img {
+    position: absolute;
     -webkit-filter: drop-shadow($pinShadow);      
     filter: drop-shadow($pinShadow);      
+  }
+
+  &__clicked {
+    position: absolute;
+    display: none;
+
+    &_show {
+      display: block;
+    }
   }
 
   &_1 {
@@ -24,4 +34,6 @@
     left: 62%;
   }
 }
+
+
 
