@@ -15,7 +15,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   var POPUP_SHOW_CLASS = 'popup_show';
   var PIN_CLASS = 'pin';
   var PIN_CLICKED_CLASS = 'pin__clicked';
-  var PIN_CLICKED_SHOW_CLASS = 'pin__clicked_SHOW'; //get all pins
+  var PIN_CLICKED_SHOW_CLASS = 'pin__clicked_show'; //get all pins
 
   var pins = document.getElementsByClassName(PIN_CLASS); //transform to regular array
 
@@ -50,9 +50,12 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
   function mapClickHandler(pins, evt) {
     if (!evt.target.classList.contains(MAP_IMG_CLASS)) return;
+    var timeout = 0;
     pins.forEach(function (pin) {
-      hidePopup(pin);
-      hidePinClicked(pin);
+      setTimeout(function () {
+        hidePopup(pin);
+        hidePinClicked(pin);
+      }, timeout += 100);
     });
   }
 

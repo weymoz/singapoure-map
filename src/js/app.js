@@ -6,7 +6,7 @@
   const POPUP_SHOW_CLASS = 'popup_show';
   const PIN_CLASS = 'pin';
   const PIN_CLICKED_CLASS = 'pin__clicked';
-  const PIN_CLICKED_SHOW_CLASS = 'pin__clicked_SHOW';
+  const PIN_CLICKED_SHOW_CLASS = 'pin__clicked_show';
 
   //get all pins
   let pins = document.getElementsByClassName(PIN_CLASS);
@@ -54,9 +54,12 @@
   function mapClickHandler(pins, evt) {
     if(!evt.target.classList.contains(MAP_IMG_CLASS)) 
       return;
+    let timeout = 0;
     pins.forEach(pin => {
-      hidePopup(pin);
-      hidePinClicked(pin);
+      setTimeout(() => {
+        hidePopup(pin);
+        hidePinClicked(pin);
+      }, timeout += 100);
     });
   }
 
