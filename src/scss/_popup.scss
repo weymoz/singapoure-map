@@ -2,16 +2,29 @@
   position: absolute;
   z-index: 1;
   right: 125%;
-  width: 900%;
-
+  overflow: hidden;
   background: white;
   filter: drop-shadow($pinShadow);      
   border-radius: 20px;
-  padding: 1.5em;
   box-sizing: border-box;
+  width: 900%;
 
   font-family: 'Source Sans Pro', sans-serif;
   color: #002782;
+
+  //Animated props
+  height: 0;
+  padding: 0;
+  opacity: 0;
+
+  transition: all .2s ease-out; 
+
+  //Animation trigger class (added via js)
+  &_show {
+    padding: 1em;
+    opacity: 100;
+    height: auto;
+  }
 
   &__title {
     margin: 0;
@@ -23,6 +36,8 @@
   &__text {
     font-size: 1.4em;
     margin: 0 0 .7em 0;
+    width: 100%;
+    white-space: nowrap;
   }
 
   &__more{
@@ -37,6 +52,8 @@
     width: 2em;
     margin-bottom: -.1em;
   }
+
+
 }
 
 
