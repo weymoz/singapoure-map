@@ -1,0 +1,13 @@
+.map {
+  width: 70%;
+  margin: auto; 
+  outline: 1px solid black;
+  position: relative;
+
+  font-size: 10px;
+
+  &__img {
+    width: 100%;
+    display: block;
+  }
+}

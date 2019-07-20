@@ -1,26 +1,5 @@
-.map {
-  width: 70%;
-  margin: auto; 
-  outline: 1px solid black;
-  position: relative;
-
-  &__img {
-    width: 100%;
-    display: block;
-  }
-}
-
-.pin {
-  position: absolute;
-  width: 3.08%;
-  height: 4%; 
-  top: 20%;
-  left: 10%;
-
-  &__img {
-    -webkit-filter: drop-shadow(4px 4px 3px rgba(0,0,0,0.5));      
-    filter: drop-shadow(4px 4px 3px rgba(0,0,0,0.5));      
-  }
-}
-
+@import "vars";
+@import "map";
+@import "pin";
+@import "popup";
 
