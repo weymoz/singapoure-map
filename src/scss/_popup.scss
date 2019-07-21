@@ -33,6 +33,14 @@
     margin: 0 0 .7em 0;
   }
 
+  &__close {
+    width: 1.5em;
+    height: 1.5em;
+    position: absolute;
+    top: 1em;
+    right: 1.5em;
+  }
+
   &__text {
     font-size: 1.4em;
     margin: 0 0 .7em 0;
