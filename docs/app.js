@@ -26,7 +26,33 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   }); //set click handler for the empty space on the map
 
   var map = document.getElementsByClassName(MAP_CLASS)[0];
-  map.addEventListener('click', mapClickHandler.bind(null, pins)); //-------------------------------------------
+  map.addEventListener('click', mapClickHandler.bind(null, pins)); //get switch button
+
+  var switchLeft = document.getElementsByClassName('switch__btn_left')[0];
+  var switchRight = document.getElementsByClassName('switch__btn_right')[0];
+  var root1 = document.getElementsByClassName('root_1')[0];
+  var root2 = document.getElementsByClassName('root_2')[0];
+  switchLeft.addEventListener('click', function (evt) {
+    evt.preventDefault();
+
+    if (switchLeft.classList.contains('switch__btn_off')) {
+      switchLeft.classList.remove('switch__btn_off');
+      switchRight.classList.add('switch__btn_off');
+      root1.classList.remove('root_off');
+      root2.classList.add('root_off');
+    }
+  });
+  switchRight.addEventListener('click', function (evt) {
+    evt.preventDefault();
+
+    if (switchRight.classList.contains('switch__btn_off')) {
+      console.log(switchRight.classList);
+      switchRight.classList.remove('switch__btn_off');
+      switchLeft.classList.add('switch__btn_off');
+      root2.classList.remove('root_off');
+      root1.classList.add('root_off');
+    }
+  }); //-------------------------------------------
   // pin functions
 
   function pinClickHandler() {
@@ -52,10 +78,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     if (!evt.target.classList.contains(MAP_IMG_CLASS)) return;
     var timeout = 0;
     pins.forEach(function (pin) {
-      setTimeout(function () {
-        hidePopup(pin);
-        hidePinClicked(pin);
-      }, timeout += 100);
+      hidePopup(pin);
+      hidePinClicked(pin);
     });
   }
 

@@ -24,6 +24,34 @@
   map.addEventListener('click', mapClickHandler.bind(null, pins));
 
 
+  //get switch button
+  const switchLeft = document.getElementsByClassName('switch__btn_left')[0];
+  const switchRight= document.getElementsByClassName('switch__btn_right')[0];
+  const root1 = document.getElementsByClassName('root_1')[0];
+  const root2 = document.getElementsByClassName('root_2')[0];
+
+  switchLeft.addEventListener('click', (evt) => {
+    evt.preventDefault();
+
+    if(switchLeft.classList.contains('switch__btn_off')) {
+      switchLeft.classList.remove('switch__btn_off');
+      switchRight.classList.add('switch__btn_off');
+      root1.classList.remove('root_off');
+      root2.classList.add('root_off');
+    }
+  })
+
+  switchRight.addEventListener('click', (evt) => {
+    evt.preventDefault();
+    
+    if(switchRight.classList.contains('switch__btn_off')) {
+      console.log(switchRight.classList)
+      switchRight.classList.remove('switch__btn_off');
+      switchLeft.classList.add('switch__btn_off');
+      root2.classList.remove('root_off');
+      root1.classList.add('root_off');
+    }
+  })
   //-------------------------------------------
   // pin functions
 
@@ -56,10 +84,8 @@
       return;
     let timeout = 0;
     pins.forEach(pin => {
-      setTimeout(() => {
         hidePopup(pin);
         hidePinClicked(pin);
-      }, timeout += 100);
     });
   }
 
