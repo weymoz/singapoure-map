@@ -1,7 +1,10 @@
+$pinShadow: 3px 3px 3px rgba(0,0,0,0.5);
+$radiusInPercents: 7%;
+
 .pin {
   position: absolute;
-  width: 3.1%;
-  height: 4.5%; 
+  width: $radiusInPercents * 0.77;
+  height: $radiusInPercents; 
   cursor: pointer;
 
   &__img {
