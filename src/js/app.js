@@ -1,5 +1,7 @@
 (function() {
 
+  console.log("HELLO WoRLD!");
+
   const MAP_CLASS = 'map';
   const MAP_IMG_CLASS = 'map__img';
   const POPUP_CLASS = 'popup';
@@ -62,14 +64,17 @@
 
 
   function findChild(parent, childClass) {
-    return [...parent.children].reduce((acc, elem) => 
+
+    const child = [...parent.children].reduce((acc, elem) => 
     elem.classList.contains(childClass) ? elem : acc, null);
+
+    return child;
   }
 
 
   function togglePopup(pin) {
-    findChild(pin, POPUP_CLASS)
-      .classList.toggle(POPUP_SHOW_CLASS);
+    const child = findChild(pin, POPUP_CLASS)
+      child.classList.toggle(POPUP_SHOW_CLASS);
   }
 
 

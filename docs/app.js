@@ -9,6 +9,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 (function () {
+  console.log("HELLO WoRLD!");
   var MAP_CLASS = 'map';
   var MAP_IMG_CLASS = 'map__img';
   var POPUP_CLASS = 'popup';
@@ -61,13 +62,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   }
 
   function findChild(parent, childClass) {
-    return _toConsumableArray(parent.children).reduce(function (acc, elem) {
+    var child = _toConsumableArray(parent.children).reduce(function (acc, elem) {
       return elem.classList.contains(childClass) ? elem : acc;
     }, null);
+
+    return child;
   }
 
   function togglePopup(pin) {
-    findChild(pin, POPUP_CLASS).classList.toggle(POPUP_SHOW_CLASS);
+    var child = findChild(pin, POPUP_CLASS);
+    child.classList.toggle(POPUP_SHOW_CLASS);
   }
 
   function togglePinClicked(pin) {

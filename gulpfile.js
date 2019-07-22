@@ -10,6 +10,7 @@ const imagemin = require('gulp-imagemin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
 sass.compiler = require("node-sass");
 
 
@@ -41,8 +42,21 @@ function serve() {
 }
 
 function html() {
-  return src(['./src/index.html'])
+  return src([
+    './src/page/style-open.html', 
+    './docs/main.css', 
+    './src/page/top.html', 
+    './src/map.html', 
+    './src/page/bottom.html', 
+    './docs/app.js', 
+    './src/page/end-script.html'])
+    .pipe(concat('index.html'))
     .pipe(dest('docs'))
+}
+
+function copyPageFiles() {
+  return src(['./src/page/index_files/**/*'], {base: 'src/page'})
+    .pipe(dest('docs'));
 }
 
 function watchHtml(cb) {
@@ -111,7 +125,7 @@ function clean() {
 
 
 exports.dev = 
-  series(clean, js, styles, html, images,   
+  series(clean, styles, js, copyPageFiles, images, html,   
     parallel(watchStyles, watchHtml, watchJs, watchImages, serve)
   );
 
