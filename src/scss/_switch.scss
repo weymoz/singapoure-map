@@ -1,33 +1,39 @@
 .switch-container {
-  display: flex;
+  width: 100%;
+  //display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3em 0;
+  margin: 3em 0 0 0;
 }
 
 .switch {
-  height: 2.5em;
+  width: 85%;
+  margin: 0 auto;
   background-color: $primaryColor;
 
   border-radius: 2em;
-  //border: .15em solid $primaryColor;
   box-sizing: border-box;
   padding: 2px;
 
   display: flex;
 
   &__btn {
+    width: 50%;
+
     font-family: $baseFont;
+
+    text-align: center;
     text-decoration: none;
     color: $primaryColor;
+    font-size: 1.3em;
+    overflow: hidden;
+
     background-color: white;
 
     transition: all .2s ease-out; 
     box-sizing: border-box;
 
-    padding: .5em 4em;
-    text-align: center;
-    text-decoration: none;
+    padding: .5em 2em;
     cursor: pointer;
     border-radius: 2em;
 

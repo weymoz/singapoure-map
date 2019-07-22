@@ -1,12 +1,17 @@
+.map-container {
+  margin: 10px auto;
+  width: 95%;
+  font-size: 10px;
+}
 .map {
-  width: 50%;
+  width: 100%;
   margin: auto; 
   position: relative;
 
-  font-size: 10px;
 
   &__img {
     width: 100%;
     display: block;
   }
 }
+
