@@ -1,10 +1,10 @@
 $pinShadow: 3px 3px 3px rgba(0,0,0,0.5);
-$radiusInPercents: 7%;
+$size: 18px;
 
 .pin {
   position: absolute;
-  width: $radiusInPercents * 0.77;
-  height: $radiusInPercents; 
+  width: $size;
+  height: $size; 
   cursor: pointer;
 
   &__img {
@@ -54,4 +54,18 @@ $radiusInPercents: 7%;
 }
 
 
+$sizeMedium: 25px;
+@media screen and (min-width: 600px) {
+  .pin {
+    width: $sizeMedium;
+    height: $sizeMedium;
+  } 
+}
 
+$sizeLarge: 4%;
+@media screen and (min-width: 900px) {
+  .pin {
+    width: $sizeLarge * 0.77;
+    height: $sizeLarge;
+  } 
+}
