@@ -31,8 +31,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
   var switchLeft = document.getElementsByClassName('switch__btn_left')[0];
   var switchRight = document.getElementsByClassName('switch__btn_right')[0];
-  var root1 = document.getElementsByClassName('root_1')[0];
-  var root2 = document.getElementsByClassName('root_2')[0];
   switchLeft.addEventListener('click', function (evt) {
     evt.preventDefault();
 
@@ -56,13 +54,12 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   }); //-------------------------------------------
   // pin functions
 
+  var zIndex = 1;
+
   function pinClickHandler() {
-    pins.forEach(function (pin) {
-      hidePopup(pin);
-      hidePinClicked(pin);
-    });
     togglePopup(this);
     togglePinClicked(this);
+    zIndex++;
   }
 
   function findChild(parent, childClass) {
@@ -74,8 +71,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   }
 
   function togglePopup(pin) {
-    var child = findChild(pin, POPUP_CLASS);
-    child.classList.toggle(POPUP_SHOW_CLASS);
+    var popup = findChild(pin, POPUP_CLASS);
+    popup.style.zIndex = zIndex;
+    popup.classList.toggle(POPUP_SHOW_CLASS);
   }
 
   function togglePinClicked(pin) {
@@ -84,11 +82,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
   function mapClickHandler(pins, evt) {
     if (!evt.target.classList.contains(MAP_IMG_CLASS)) return;
-    var timeout = 0;
     pins.forEach(function (pin) {
       hidePopup(pin);
       hidePinClicked(pin);
     });
+    zIndex = 1;
   }
 
   function hidePopup(pin) {

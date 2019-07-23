@@ -29,8 +29,6 @@
   //get switch button
   const switchLeft = document.getElementsByClassName('switch__btn_left')[0];
   const switchRight= document.getElementsByClassName('switch__btn_right')[0];
-  const root1 = document.getElementsByClassName('root_1')[0];
-  const root2 = document.getElementsByClassName('root_2')[0];
 
   switchLeft.addEventListener('click', (evt) => {
     evt.preventDefault();
@@ -57,30 +55,25 @@
   //-------------------------------------------
   // pin functions
 
+  let zIndex = 1;
   function pinClickHandler() {
-
-    pins.forEach(pin => {
-        hidePopup(pin);
-        hidePinClicked(pin);
-    });
-
     togglePopup(this);
     togglePinClicked(this);
+    zIndex++;
   }
 
 
   function findChild(parent, childClass) {
-
     const child = [...parent.children].reduce((acc, elem) => 
     elem.classList.contains(childClass) ? elem : acc, null);
-
     return child;
   }
 
 
   function togglePopup(pin) {
-    const child = findChild(pin, POPUP_CLASS)
-      child.classList.toggle(POPUP_SHOW_CLASS);
+    const popup = findChild(pin, POPUP_CLASS)
+    popup.style.zIndex = zIndex;
+    popup.classList.toggle(POPUP_SHOW_CLASS);
   }
 
 
@@ -93,11 +86,11 @@
   function mapClickHandler(pins, evt) {
     if(!evt.target.classList.contains(MAP_IMG_CLASS)) 
       return;
-    let timeout = 0;
     pins.forEach(pin => {
         hidePopup(pin);
         hidePinClicked(pin);
     });
+    zIndex = 1;
   }
 
 
