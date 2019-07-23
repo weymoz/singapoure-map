@@ -43,13 +43,11 @@ function serve() {
 
 function html() {
   return src([
-    './src/page/style-open.html', 
-    './docs/main.css', 
     './src/page/top.html', 
+    //'./src/page/index.html', 
     './src/map.html', 
-    './src/page/bottom.html', 
-    './docs/app.js', 
-    './src/page/end-script.html'])
+    './src/page/bottom.html'
+  ])
     .pipe(concat('index.html'))
     .pipe(dest('docs'))
 }
@@ -119,8 +117,9 @@ function watchImages(cb) {
 }
 
 
-function clean() {
-  return del(['docs']);
+function clean(cb) {
+  del(['docs']);
+  return cb();
 }
 
 

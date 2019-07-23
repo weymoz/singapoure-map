@@ -57,6 +57,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   // pin functions
 
   function pinClickHandler() {
+    pins.forEach(function (pin) {
+      hidePopup(pin);
+      hidePinClicked(pin);
+    });
     togglePopup(this);
     togglePinClicked(this);
   }

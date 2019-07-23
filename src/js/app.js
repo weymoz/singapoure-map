@@ -58,6 +58,12 @@
   // pin functions
 
   function pinClickHandler() {
+
+    pins.forEach(pin => {
+        hidePopup(pin);
+        hidePinClicked(pin);
+    });
+
     togglePopup(this);
     togglePinClicked(this);
   }
