@@ -1,14 +1,14 @@
 .switch-container {
   width: 100%;
-  //display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin: 3em 0 0 0;
+  margin: 2em 0 0 0;
+
 }
 
 .switch {
-  width: 85%;
-  margin: 0 auto;
+  width: 60%;
   background-color: $primaryColor;
 
   border-radius: 2em;
@@ -16,6 +16,14 @@
   padding: 2px;
 
   display: flex;
+  transition: all .2s ease-out;
+
+
+  &_sticky {
+    position: fixed;
+    top: 30px;
+    width: 60%;
+  }
 
   &__btn {
     width: 50%;
@@ -25,7 +33,7 @@
     text-align: center;
     text-decoration: none;
     color: $primaryColor;
-    font-size: 1.3em;
+    font-size: 1.2em;
     overflow: hidden;
 
     background-color: white;
@@ -33,7 +41,7 @@
     transition: all .2s ease-out; 
     box-sizing: border-box;
 
-    padding: .5em 2em;
+    padding: .4em .8em;
     cursor: pointer;
     border-radius: 2em;
 
@@ -49,10 +57,36 @@
   }
 }
 
-.root {
-  display: block;
+.route_hide {
+  display: none;
 }
 
-.root_off {
-  display: none;
+@media screen and (min-width: 600px) {
+.switch {
+  width: 40%;
+  border-radius: 2em;
+
+  &_sticky {
+    position: fixed;
+    top: 30px;
+    width: 30%;
+  }
+
+  &__btn {
+    font-size: 1.5em;
+    padding: .4em .8em;
+  }
+}
+
+}
+
+@media screen and (min-width: 1900px) {
+.switch {
+  &_sticky {
+    position: fixed;
+    top: 30px;
+    width: 25%;
+  }
+}
+
 }

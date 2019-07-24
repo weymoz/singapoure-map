@@ -6,7 +6,6 @@
   justify-content: space-between;
 
   z-index: 999;
-  right: 125%;
   overflow: hidden;
   background: white;
   filter: drop-shadow($pinShadow);      
@@ -24,6 +23,13 @@
 
   transition: all .2s ease-out; 
 
+  &_left {
+    right: 125%;
+  }
+
+  &_right {
+    left: 125%;
+  }
   //Animation trigger class (added via js)
   &_show {
     padding: 1.3em;
@@ -33,6 +39,8 @@
 
   &__title {
     margin: 0;
+    font-family: $baseFont;
+    font-weight: bold !important;
     display: inline-block;
     padding: 0;
     font-size: 1.4em;

@@ -1,5 +1,5 @@
 $pinShadow: 3px 3px 3px rgba(0,0,0,0.5);
-$size: 18px;
+$size: 16px;
 
 .pin {
   position: absolute;
@@ -37,20 +37,96 @@ $size: 18px;
     left: 62%;
   }
 
-  &_12 {
-    top: 71%;
-    left: 22%;
+  &_4 {
+    top: 47%;
+    left: 68%;
   }
+  &_5 {
+    top: 44%;
+    left: 59%;
+  }
+  &_6 {
+    top: 42%;
+    left: 62%;
+  }
+  &_7 {
+    top: 42%;
+    left: 66%;
+  }
+  &_8 {
+    top: 36%;
+    left: 59%;
+  }
+  &_9 {
+    top: 28%;
+    left: 73%;
+  }
+  &_10 {
+    top: 24%;
+    left: 66%;
+  }
+  &_11 {
+    top: 18%;
+    left: 61%;
+  }
+  &_12 {
+    top: 11%;
+    left: 62%;
+  }
+
+// route 2
 
   &_13 {
+    top: 73%;
+    left: 20%;
+  }
+  &_14 {
     top: 45%;
-    left: 48%;
+    left: 45%;
+  }
+  &_15 {
+    top: 38%;
+    left: 50%;
+  }
+  &_16 {
+    top: 44%;
+    left: 64%;
+  }
+  &_17 {
+    top: 47%;
+    left: 74%;
+  }
+  &_18 {
+    top: 17%;
+    left: 88%;
+  }
+  &_19 {
+    top: 10%;
+    left: 91%;
+  }
+  &_20 {
+    top: 20%;
+    left: 69%;
+  }
+  &_21 {
+    top: 8%;
+    left: 73%;
+  }
+  &_22 {
+    top: 2%;
+    left: 61%;
+  }
+  &_23 {
+    top: 16%;
+    left: 28%;
+  }
+  &_24 {
+    top: 30%;
+    left: 21%;
   }
 
-  &_14 {
-    top: 2%;
-    left: 60%;
-  }
+
+
 }
 
 

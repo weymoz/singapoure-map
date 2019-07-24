@@ -16,50 +16,108 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   var POPUP_SHOW_CLASS = 'popup_show';
   var PIN_CLASS = 'pin';
   var PIN_CLICKED_CLASS = 'pin__clicked';
-  var PIN_CLICKED_SHOW_CLASS = 'pin__clicked_show'; //get all pins
+  var PIN_CLICKED_SHOW_CLASS = 'pin__clicked_show';
+  var openPin = null;
+  /*
+   * Pins
+   */
+  //set click handlers for all pins on the map
 
-  var pins = document.getElementsByClassName(PIN_CLASS); //transform to regular array
-
-  pins = _toConsumableArray(pins); //set click handler for each pin
-
+  var pins = document.getElementsByClassName(PIN_CLASS);
+  pins = _toConsumableArray(pins);
   pins.forEach(function (pin) {
     pin.addEventListener('click', pinClickHandler);
   }); //set click handler for the empty space on the map
 
   var map = document.getElementsByClassName(MAP_CLASS)[0];
-  map.addEventListener('click', mapClickHandler.bind(null, pins)); //get switch button
+  map.addEventListener('click', mapClickHandler.bind(null, pins));
+  /**
+   * Switch
+   */
+  //get switch button
 
   var switchLeft = document.getElementsByClassName('switch__btn_left')[0];
   var switchRight = document.getElementsByClassName('switch__btn_right')[0];
+  var route1Pins = document.getElementById('route-1-pins');
+  var route2Pins = document.getElementById('route-2-pins');
+  var route1 = document.getElementById('route-1');
+  var route2 = document.getElementById('route-2');
+  var switcher = document.getElementsByClassName('switch')[0];
+
+  switcher.isSticky = function () {
+    return this.classList.contains('switch_sticky');
+  };
+
+  var switcherOffset = switcher.offsetTop;
   switchLeft.addEventListener('click', function (evt) {
     evt.preventDefault();
 
     if (switchLeft.classList.contains('switch__btn_off')) {
       switchLeft.classList.remove('switch__btn_off');
       switchRight.classList.add('switch__btn_off');
-      root1.classList.remove('root_off');
-      root2.classList.add('root_off');
+      route1Pins.classList.remove('route_hide');
+      route2Pins.classList.add('route_hide');
+      route1.classList.remove('route_hide');
+      route2.classList.add('route_hide');
+      switcher.isSticky() && scrollTo('routes-start');
     }
   });
   switchRight.addEventListener('click', function (evt) {
     evt.preventDefault();
 
     if (switchRight.classList.contains('switch__btn_off')) {
-      console.log(switchRight.classList);
       switchRight.classList.remove('switch__btn_off');
       switchLeft.classList.add('switch__btn_off');
-      root2.classList.remove('root_off');
-      root1.classList.add('root_off');
+      route2Pins.classList.remove('route_hide');
+      route1Pins.classList.add('route_hide');
+      route2.classList.remove('route_hide');
+      route1.classList.add('route_hide');
+      switcher.isSticky() && scrollTo('routes-start');
+      console.log(switcher.isSticky());
     }
-  }); //-------------------------------------------
-  // pin functions
+  });
+  /*
+   * Switcher stickiness
+   */
+
+  window.onscroll = function () {
+    if (window.pageYOffset > switcherOffset) {
+      switcher.classList.add("switch_sticky");
+    } else {
+      switcher.classList.remove("switch_sticky");
+    }
+  };
+  /**
+   * Functions
+   */
+
+
+  function scrollTo(hash) {
+    location.href = "#";
+    location.href = "#" + hash;
+  }
 
   var zIndex = 1;
 
-  function pinClickHandler() {
-    togglePopup(this);
-    togglePinClicked(this);
-    zIndex++;
+  function pinClickHandler(evt) {
+    //togglePopup(this);
+    //togglePinClicked(this);
+    //zIndex++;
+    if (openPin) {
+      hidePopup(openPin);
+      hidePinClicked(openPin);
+    }
+
+    if (evt.target.classList.contains('popup__close')) {
+      console.log(this);
+      hidePopup(this);
+      hidePinClicked(this);
+    } else {
+      togglePopup(this);
+      togglePinClicked(this);
+      zIndex++;
+      openPin = this;
+    }
   }
 
   function findChild(parent, childClass) {
@@ -72,6 +130,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
   function togglePopup(pin) {
     var popup = findChild(pin, POPUP_CLASS);
+    console.log(popup);
     popup.style.zIndex = zIndex;
     popup.classList.toggle(POPUP_SHOW_CLASS);
   }

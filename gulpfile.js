@@ -43,10 +43,11 @@ function serve() {
 
 function html() {
   return src([
-    './src/page/top.html', 
+        './src/page/top.html', 
     //'./src/page/index.html', 
     './src/map.html', 
-    './src/page/bottom.html'
+    //'./src/index.html', 
+     './src/page/bottom.html'
   ])
     .pipe(concat('index.html'))
     .pipe(dest('docs'))
@@ -58,7 +59,7 @@ function copyPageFiles() {
 }
 
 function watchHtml(cb) {
-  watch('src/*.html', html);
+  watch('src/**/*.html', html);
   cb();
 }
 
