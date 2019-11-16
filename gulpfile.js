@@ -87,21 +87,13 @@ function watchStyles(cb) {
 }
 
 function optimizeImages() {
-  return src("src/img/**/*.*", {base: "src"})
+  return src("src/img/map.png", {base: "src"})
     .pipe(imagemin([
-      imagemin.jpegtran({progressive: true}),
       imagemin.optipng({optimizationLevel: 5}),
-      imagemin.svgo({
-        plugins: [
-          {removeViewBox: true},
-          {cleanupIDs: false}
-        ]
-      }),
     ], {verbose: true}))
-    .pipe(imagemin(imageminMozjpeg({quality: 50})))
-    .pipe(dest("docs"))
-    .pipe(dest("dist"))
-    .pipe(dest("peopletalk"));
+    .pipe(dest("docs"));
+  //    .pipe(dest("dist"))
+  // .pipe(dest("peopletalk"));
 }
 
 

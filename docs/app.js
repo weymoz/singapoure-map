@@ -18,6 +18,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   var PIN_CLICKED_CLASS = 'pin__clicked';
   var PIN_CLICKED_SHOW_CLASS = 'pin__clicked_show';
   var openPin = null;
+  var scroll = new SmoothScroll('a[href*="#"]');
   /*
    * Pins
    */

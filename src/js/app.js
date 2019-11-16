@@ -12,6 +12,7 @@
 
   let openPin = null;
 
+  var scroll = new SmoothScroll('a[href*="#"]');
   /*
    * Pins
    */
